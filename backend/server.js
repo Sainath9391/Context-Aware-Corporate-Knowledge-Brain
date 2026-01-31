@@ -4,9 +4,9 @@ const cors = require("cors");
 require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
-const sopRoutes = require("./routes/sopRoutes");
+const sopRoutes = require("./routes/sopRoutes"); // upload
+const fileRoutes = require("./routes/fileRoutes"); // files list
 const chatRoutes = require("./routes/chatRoutes");
-const fileRoutes = require("./routes/fileRoutes");
 
 const app = express();
 
@@ -16,23 +16,20 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-
 app.use(express.json());
 
-
-// ✅ CONNECT FIRST
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
-  .catch(err => console.log(err));
+  .catch(console.error);
 
 
-// ✅ ROUTES (clean paths)
+// 🔥 ONE PREFIX ONLY
 app.use("/api/auth", authRoutes);
-app.use("/api/sop", sopRoutes);
-app.use("/api/files", fileRoutes);
-app.use("/api/chat", chatRoutes);
+app.use("/api", sopRoutes);
+app.use("/api", fileRoutes);
+app.use("/api", chatRoutes);
 
 
-app.listen(process.env.PORT, () =>
-  console.log(`🚀 Server running on ${process.env.PORT}`)
+app.listen(process.env.PORT || 5000, () =>
+  console.log(`🚀 Server running on ${process.env.PORT || 5000}`)
 );

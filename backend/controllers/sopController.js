@@ -1,13 +1,20 @@
-const SopChunk = require("../models/SopChunk");
-const { extractText, chunkText } = require("../utils/pdfProcessor");
+const SopChunk = require("../models/SopChunk"); // ✅ fixed path
+const { extractText, chunkText } = require("../utils/fileProcessor");
 const { getEmbedding } = require("../config/embedding");
 
 
-exports.uploadPDF = async (req, res) => {
+// =================================================
+// UPLOAD FILE (PDF / DOCX / TXT)
+// =================================================
+exports.uploadFile = async (req, res) => {
   try {
     const file = req.file;
 
-    const text = await extractText(file.buffer);
+    if (!file) {
+      return res.status(400).json({ msg: "No file uploaded" });
+    }
+
+    const text = await extractText(file);
     const chunks = chunkText(text);
 
     for (let chunk of chunks) {
@@ -16,56 +23,46 @@ exports.uploadPDF = async (req, res) => {
       await SopChunk.create({
         text: chunk,
         embedding,
-        page: 0, // improve later
+        page: 0,
         source_pdf: file.originalname
       });
     }
 
-    res.json({ msg: "PDF processed & stored successfully" });
+    res.json({ msg: "File processed & stored successfully" });
 
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-};
-
-// ================= LIST PDFs =================
-exports.listPDFs = async (req, res) => {
-  try {
-    const pdfs = await SopChunk.aggregate([
-      {
-        $group: {
-          _id: "$source_pdf",
-          count: { $sum: 1 }
-        }
-      },
-      {
-        $project: {
-          name: "$_id",
-          chunks: "$count",
-          _id: 0
-        }
-      }
-    ]);
-
-    res.json(pdfs);
-
-  } catch (err) {
-    res.status(500).json(err);
+    console.error(err);
+    res.status(500).json({ msg: "Processing failed" });
   }
 };
 
 
-// ================= DELETE PDF =================
-exports.deletePDF = async (req, res) => {
-  try {
-    const name = req.params.name;
 
-    await SopChunk.deleteMany({ source_pdf: name });
+// =================================================
+// LIST FILES
+// =================================================
+exports.listFiles = async (req, res) => {
+  try {
+    const files = await SopChunk.distinct("source_pdf");
+    res.json(files);
+  } catch {
+    res.status(500).json({ msg: "Failed" });
+  }
+};
+
+
+
+// =================================================
+// DELETE FILE
+// =================================================
+exports.deleteFile = async (req, res) => {
+  try {
+    await SopChunk.deleteMany({
+      source_pdf: req.params.name
+    });
 
     res.json({ msg: "Deleted successfully" });
-
-  } catch (err) {
-    res.status(500).json(err);
+  } catch {
+    res.status(500).json({ msg: "Failed" });
   }
 };

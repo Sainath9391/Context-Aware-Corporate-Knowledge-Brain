@@ -2,9 +2,6 @@ const router = require("express").Router();
 const auth = require("../middleware/auth");
 const { chat } = require("../controllers/chatController");
 
-// 🔥 protected route
-router.post("/", auth, chat);
-
-
+router.post("/chat", auth, chat);
 
 module.exports = router;

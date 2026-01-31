@@ -1,4 +1,6 @@
-const SopChunk = require("../models/SopChunk");
+//  
+  //{
+  /*const SopChunk = require("../models/SopChunk");
 
 exports.getFiles = async (req, res) => {
   try {
@@ -13,3 +15,5 @@ exports.getFiles = async (req, res) => {
     res.status(500).json({ msg: "Failed to fetch files" });
   }
 };
+   */
+  //}
