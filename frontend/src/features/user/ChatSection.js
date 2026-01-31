@@ -9,8 +9,11 @@ export default function ChatSection() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getFiles().then(setFiles);
-  }, []);
+  getFiles()
+    .then(setFiles)
+    .catch(console.error);
+}, []);
+
 
   const send = async () => {
     if (!text.trim()) return;

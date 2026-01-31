@@ -1,40 +1,77 @@
 import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import {
-  uploadPDF,
-  listPDFs,
-  deletePDF
-} from "../../services/sopApi";
+  uploadFile,
+  getFiles
+} from "../../services/chatApi";
 
 export default function PdfManager() {
   const [file, setFile] = useState(null);
-  const [pdfs, setPdfs] = useState([]);
+  const [files, setFiles] = useState([]);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const loadPDFs = async () => {
-    const data = await listPDFs();
-    setPdfs(data);
+  // =========================
+  // Load files
+  // =========================
+  const loadFiles = async () => {
+    try {
+      const data = await getFiles();
+      setFiles(data || []);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
-    loadPDFs();
+    loadFiles();
   }, []);
 
+  // =========================
+  // Upload file
+  // =========================
   const handleUpload = async () => {
     if (!file) return;
 
-    await uploadPDF(file);
-    setFile(null);
-    loadPDFs();
+    try {
+      setLoading(true);
+
+      await uploadFile(file);
+
+      setFile(null);
+      loadFiles();
+
+      alert("Uploaded successfully ✅");
+    } catch (err) {
+      console.error(err);
+      alert("Upload failed ❌");
+    } finally {
+      setLoading(false);
+    }
   };
 
+  // =========================
+  // Delete file
+  // =========================
   const handleDelete = async (name) => {
-    await deletePDF(name);
-    loadPDFs();
+    try {
+      const token = localStorage.getItem("token");
+
+      await fetch(`http://localhost:5000/api/files/${name}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      loadFiles();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const filtered = pdfs.filter(p =>
-    p.name.toLowerCase().includes(search.toLowerCase())
+  const filtered = files.filter((f) =>
+    f.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -42,34 +79,41 @@ export default function PdfManager() {
 
       <h2 className="workspace-title">Admin Control Panel ⚙️</h2>
 
-      {/* Upload Card */}
-      <Card title="Upload SOP PDF">
+      {/* ================= Upload Card ================= */}
+      <Card title="Upload SOP File">
+
         <input
           type="file"
-          accept="application/pdf"
+          accept=".pdf,.docx,.txt,.xls,.xlsx,.csv"
           onChange={(e) => setFile(e.target.files[0])}
         />
-        <button onClick={handleUpload}>Upload</button>
+
+        <button onClick={handleUpload} disabled={loading}>
+          {loading ? "Uploading..." : "Upload"}
+        </button>
+
       </Card>
 
 
-      {/* List Card */}
-      <Card title={
-        <>Stored PDFs <span className="badge">{pdfs.length}</span></>
-      }>
+      {/* ================= List Card ================= */}
+      <Card
+        title={
+          <>Stored Files <span className="badge">{files.length}</span></>
+        }
+      >
 
         <input
-          placeholder="Search pdf..."
+          placeholder="Search file..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{ marginBottom: 12 }}
         />
 
         <ul className="pdf-list">
-          {filtered.map((p, i) => (
+          {filtered.map((name, i) => (
             <li key={i}>
-              <span>{p.name}</span>
-              <button onClick={() => handleDelete(p.name)}>
+              <span>📄 {name}</span>
+              <button onClick={() => handleDelete(name)}>
                 Delete
               </button>
             </li>
