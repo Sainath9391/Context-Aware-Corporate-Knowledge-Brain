@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { askChat, getFiles } from "../../services/chatApi";
 import "./ChatSection.css"; 
+import AIResponseCard from "../../components/AIResponseCard";
 
 export default function ChatSection() {
   const [messages, setMessages] = useState([]);
@@ -15,24 +16,31 @@ export default function ChatSection() {
 }, []);
 
 
-  const send = async () => {
-    if (!text.trim()) return;
+ const send = async () => {
+  if (!text.trim()) return;
 
-    const userText = text;
+  const userText = text;
 
-    setMessages(prev => [...prev, { role: "user", text: userText }]);
-    setText("");
-    setLoading(true);
+  setMessages(prev => [...prev, { role: "user", text: userText }]);
+  setText("");
+  setLoading(true);
 
+  try {
     const res = await askChat(userText);
 
     setMessages(prev => [
       ...prev,
-      { role: "bot", text: res.answer }
+      {
+        role: "bot",
+        ...res   // 🔥 IMPORTANT — spread entire structured response
+      }
     ]);
+  } catch (err) {
+    console.error(err);
+  }
 
-    setLoading(false);
-  };
+  setLoading(false);
+};
 
   return (
     <div className="chat-layout">
@@ -55,13 +63,37 @@ export default function ChatSection() {
 
         <div className="messages">
           {messages.map((m, i) => (
-            <div
-              key={i}
-              className={`msg ${m.role === "user" ? "user" : "bot"}`}
-            >
-              {m.text}
-            </div>
-          ))}
+  <div
+    key={i}
+    className={`msg ${m.role === "user" ? "user" : "bot"}`}
+  >
+    {/* USER MESSAGE */}
+    {m.role === "user" && <div>{m.text}</div>}
+
+    {/* BOT MESSAGE */}
+    {m.role === "bot" && (
+      <>
+        {m.status === "found" && (
+          <AIResponseCard
+            status="found"
+            interpretation={m.interpretation}
+            answer={m.answer}
+            documentDetails={m.documentDetails}
+            keywords={m.keywords}
+            confidence={m.confidence}
+          />
+        )}
+
+        {m.status === "notfound" && (
+          <AIResponseCard
+            status="notfound"
+            confidence={m.confidence}
+          />
+        )}
+      </>
+    )}
+  </div>
+))}
 
           {loading && <div className="thinking">Thinking...</div>}
         </div>

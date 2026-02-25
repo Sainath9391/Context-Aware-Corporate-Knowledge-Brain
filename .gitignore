@@ -29,3 +29,66 @@ frontend/node_modules
 .env
 build
 dist
+# ==============================
+# Node.js
+# ==============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ==============================
+# Environment Variables
+# ==============================
+.env
+.env.local
+.env.development
+.env.production
+
+# ==============================
+# Logs
+# ==============================
+logs/
+*.log
+
+# ==============================
+# OS Files
+# ==============================
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Build Folders
+# ==============================
+build/
+dist/
+frontend/build/
+
+# ==============================
+# IDE
+# ==============================
+.vscode/
+.idea/
+
+# ==============================
+# Temporary / Backup
+# ==============================
+backup/
+tmp/
+temp/
+
+# ==============================
+# Coverage
+# ==============================
+coverage/
+
+# ==============================
+# Render / Deployment
+# ==============================
+.render/
+
+# ==============================
+# Lock Files (Optional – Keep if deploying)
+# ==============================
+# package-lock.json
+# yarn.lock
