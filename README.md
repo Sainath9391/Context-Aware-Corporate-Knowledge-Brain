@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=18,24,30&height=200&section=header&text=OpsMind%20AI&fontSize=54&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Context-Aware%20Enterprise%20SOP%20Agent%20%7C%20RAG%20Pipeline%20%7C%20Zero%20Hallucination&descAlignY=55&descSize=15&descColor=ffffff" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0EA5E9,50:7C3AED,100:06B6D4&height=210&section=header&text=OpsMind%20AI&fontSize=56&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Context-Aware%20Enterprise%20SOP%20Agent%20%7C%20RAG%20Pipeline%20%7C%20Zero%20Hallucination&descAlignY=56&descSize=15&descColor=e2e8f0" />
 
 </div>
 
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=600&size=18&duration=3500&pause=1000&color=34D399&center=true&vCenter=true&width=700&height=50&lines=Retrieval-Augmented+Generation+%7C+MongoDB+Atlas;Enterprise+SOP+Agent+%7C+Gemini+1.5+Flash;Semantic+Search+%7C+Source+Citation+%7C+No+Hallucination;500%2B+Page+Document+Intelligence+in+Seconds" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=600&size=18&duration=3500&pause=1000&color=38BDF8&center=true&vCenter=true&width=700&height=50&lines=Retrieval-Augmented+Generation+%7C+MongoDB+Atlas;Enterprise+SOP+Agent+%7C+Cloudflare+AI+%26+Ollama;Semantic+Search+%7C+Source+Citation+%7C+No+Hallucination;500%2B+Page+Document+Intelligence+in+Seconds" alt="Typing SVG" />
 
 <br/>
 
@@ -19,11 +19,11 @@
 
 <br/>
 
-[![Stars](https://img.shields.io/github/stars/Sainath9391/OpsMind-AI?style=flat-square&color=34D399&label=Stars)](https://github.com/Sainath9391/OpsMind-AI/stargazers)
-[![Forks](https://img.shields.io/github/forks/Sainath9391/OpsMind-AI?style=flat-square&color=34D399&label=Forks)](https://github.com/Sainath9391/OpsMind-AI/network)
-[![License](https://img.shields.io/badge/License-MIT-34D399?style=flat-square)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Sainath9391/OpsMind-AI?style=flat-square&color=7C3AED&label=Stars)](https://github.com/Sainath9391/Context-Aware-Corporate-Knowledge-Brain/stargazers)
+[![Forks](https://img.shields.io/github/forks/Sainath9391/OpsMind-AI?style=flat-square&color=7C3AED&label=Forks)](https://github.com/Sainath9391/Context-Aware-Corporate-Knowledge-Brain/network)
+[![License](https://img.shields.io/badge/License-MIT-7C3AED?style=flat-square)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-22D3EE?style=flat-square)](#)
-[![RAG](https://img.shields.io/badge/Architecture-RAG%20Pipeline-34D399?style=flat-square)](#)
+[![RAG](https://img.shields.io/badge/Architecture-RAG%20Pipeline-7C3AED?style=flat-square)](#)
 
 <br/>
 
@@ -191,7 +191,7 @@ initiated within 7 working days of the original transaction date...
 ## ◈ Project Structure
 
 ```
-OpsMind-AI/
+Context-Aware-Corporate-Knowledge-Brain/
 │
 ├── backend/
 │   ├── config/              # DB connections, Cloudflare AI & Ollama config
@@ -242,8 +242,8 @@ OpsMind-AI/
 **1. Clone the Repository**
 
 ```bash
-git clone https://github.com/Sainath9391/OpsMind-AI.git
-cd OpsMind-AI
+git clone https://github.com/Sainath9391/Context-Aware-Corporate-Knowledge-Brain.git
+cd Context-Aware-Corporate-Knowledge-Brain
 ```
 
 **2. Backend Setup**
@@ -357,7 +357,7 @@ MIT License — see [`LICENSE`](LICENSE) for full details.
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=18,24,30&height=120&section=footer" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:06B6D4,50:7C3AED,100:0EA5E9&height=120&section=footer" />
 
 <div align="center">
 
@@ -368,7 +368,7 @@ _B.Tech CSE (Data Science) &nbsp;·&nbsp; AI &nbsp;·&nbsp; Backend Systems &nbs
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Sainath9391)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/pendalwar-sainath-598169349)
-[![Portfolio](https://img.shields.io/badge/Portfolio-34D399?style=for-the-badge&logo=vercel&logoColor=white)](https://sainath9391.github.io/SmartPortfolio_Sainath/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-7C3AED?style=for-the-badge&logo=vercel&logoColor=white)](https://sainath9391.github.io/SmartPortfolio_Sainath/)
 [![Gmail](https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sainathpendalwar43@gmail.com)
 
 <br/>
