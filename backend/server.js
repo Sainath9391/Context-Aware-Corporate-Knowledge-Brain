@@ -11,7 +11,7 @@ const chatRoutes = require("./routes/chatRoutes");
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://opsmind-ai-backend-9jbq.onrender.com"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
