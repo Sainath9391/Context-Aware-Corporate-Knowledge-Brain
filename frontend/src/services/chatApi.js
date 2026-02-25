@@ -1,5 +1,6 @@
 const API = "https://opsmind-ai-backend-9jbq.onrender.com/api";
 
+
 const authFetch = async (url, options = {}) => {
   const token = localStorage.getItem("token");
 
@@ -29,7 +30,8 @@ export const uploadFile = async (file) => {
   const form = new FormData();
   form.append("file", file);
 
-  const res = await fetch("http://localhost:5000/api/upload", {  // 🔥 hardcoded
+  //const res = await fetch("http://localhost:5000/api/upload", {
+  const res = await fetch(`${API}/upload`, {  // 🔥 hardcoded
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`

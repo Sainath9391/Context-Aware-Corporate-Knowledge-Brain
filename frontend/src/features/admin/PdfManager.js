@@ -56,8 +56,8 @@ export default function PdfManager() {
   const handleDelete = async (name) => {
     try {
       const token = localStorage.getItem("token");
-
-      await fetch(`http://localhost:5000/api/files/${name}`, {
+      //await fetch(`http://localhost:5000/api/files/${name}`,
+      await fetch(`https://opsmind-ai-backend-9jbq.onrender.com/api/files/${name}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`

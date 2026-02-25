@@ -1,4 +1,5 @@
-const BASE = "http://localhost:5000/api/sop";
+//const BASE = "http://localhost:5000/api/sop";
+const BASE = "https://opsmind-ai-backend-9jbq.onrender.com/api/sop";
 
 const token = () => localStorage.getItem("token");
 
