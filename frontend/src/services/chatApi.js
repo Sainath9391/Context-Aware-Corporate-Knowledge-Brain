@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api";
+const API = "https://opsmind-ai-backend-9jbq.onrender.com/api";
 
 const authFetch = async (url, options = {}) => {
   const token = localStorage.getItem("token");
