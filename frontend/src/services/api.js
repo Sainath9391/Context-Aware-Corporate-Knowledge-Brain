@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://opsmind-ai-backend-9jbq.onrender.com/api";
 
 // ================= COMMON FETCH =================
 const authFetch = async (url, options = {}) => {
