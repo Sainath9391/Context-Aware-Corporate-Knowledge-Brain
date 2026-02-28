@@ -27,7 +27,7 @@
 
 <br/>
 
-[**Live Demo**](#) &nbsp;·&nbsp; [**Report Bug**](#) &nbsp;·&nbsp; [**Request Feature**](#)
+[**Live Demo**](https://context-aware-corporate-knowledge-brain-7yx2.onrender.com) &nbsp;·&nbsp; [**Report Bug**](#) &nbsp;·&nbsp; [**Request Feature**](#)
 
 </div>
 
